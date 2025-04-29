@@ -1,0 +1,16 @@
+1. **Deployment Completed!**
+
+Your deployment has been successfully installed with the following configuration:
+
+- **Application Name**: {{ .Release.Name }}
+- **Namespace**: {{ .Release.Namespace }}
+- **Replicas**: {{ .Values.replicas }}
+- **Service Type**: {{ .Values.service.type }}
+- **Target Port**: {{ .Values.service.targetPort }}
+- **Service Port**: {{ .Values.service.port }}
+
+2. **Accessing Your Application**
+
+- If you selected **ClusterIP** as the service type (default):
+  The service is accessible only within the Kubernetes cluster. The traffic routing in this application is managed by an independent Ingress resource
+

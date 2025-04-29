@@ -1,0 +1,13 @@
+{{- if .Values.createConfigMap }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-config
+  labels:
+    group: app
+data:
+  POSTGRES_DB: {{ .Values.config.POSTGRES_DB }}
+  POSTGRES_USER: {{ .Values.config.POSTGRES_USER }}
+  POSTGRES_PASSWORD: {{ .Values.config.POSTGRES_PASSWORD }}
+  DB_SERVER: postgres
+{{- end }}

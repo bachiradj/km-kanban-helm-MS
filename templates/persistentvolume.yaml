@@ -1,0 +1,13 @@
+{{- if .Values.createPV }}
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ .Release.Name }}-pv
+spec:
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: {{ .Values.pv.capacity }}
+  hostPath:
+    path: "{{ .Values.pv.hostPath }}"
+{{- end }}

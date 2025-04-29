@@ -1,0 +1,46 @@
+# Default values for kanban-tp.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# These can be overridden by the user during installation
+
+
+image:
+  repository: nginx
+  tag: "latest"
+
+resources:
+  requests:
+    memory: "64Mi"
+    cpu: "250m"
+  limits:
+    memory: "128Mi"
+    cpu: "250m"
+
+config:
+  POSTGRES_DB: test
+  POSTGRES_USER: test
+  POSTGRES_PASSWORD: test
+
+# Enable or disable optional resources
+createConfigMap: true
+createPV: true
+createPVC: true
+
+pv:
+  capacity: 200Mi
+  hostPath: "/home/application-data"
+
+pvc:
+  requests:
+    storage: 200Mi
+
+service:
+  name: "my-app-service"   
+  type: ClusterIP  # Change to NodePort for external access
+  port: 5432       # Default port exposed by the service
+  targetPort: 5432 # Default target port for the container
+  nodePort: 30000  # Only used if service.type is NodePort
+
+# Set number of replicas (default: 1)
+replicas: 1
